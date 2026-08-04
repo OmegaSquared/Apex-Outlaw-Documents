@@ -2,6 +2,19 @@
 
 *Plan approved by Aaron 2026-08-03. Build not started — this document is the source of truth for the next session.*
 
+> **⚠ SUPERSEDED 2026-08-03 (same day, in-session) — BUILT, with two approved pivots.**
+> The build shipped against [`ground_tier_implementation_plan.md`](./ground_tier_implementation_plan.md)
+> (rev 3), which now carries the live status table and is the source of truth. What changed
+> from THIS document:
+> - **Rev 2:** no separate `Rubicon_ground` scene — the ground tier lives IN-SCENE inside
+>   `Rubicon_surface` on the native 1M Draxxor ("we are landing on what we see"). The
+>   "generic terrain patch" scope cut is void; terrain identity holds by construction.
+> - **Rev 3:** the CombatSandbox surface micro is RETIRED — **the ground IS the surface
+>   micro**. Dropping out of hyper on the surface chart descends to the 150 m floor; battles
+>   are fought there. The α1.6i `DropToMicro` path is dormant pending deletion after soak.
+> - Grade cap decided **A−** (matches canon); entry = GROUND button + zoom drop; the drop is
+>   a FLEET action (no fleet, no ground); ships hold 150 m terrain-following altitude.
+
 ## What it is
 
 The fourth and final level of the world, directly above the terrain:

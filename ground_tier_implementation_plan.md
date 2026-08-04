@@ -33,13 +33,13 @@
 | 3. Precision check at ground zoom (1M radius) | ✅ DONE | play-tested by Aaron — drop lands on real terrain, no jitter reported |
 | 4. `GroundContentSeeds` (game seed + A− player-seed grades) | ✅ DONE | determinism check PASS: 0 placement mismatches, 0 cap violations, grades differ per account |
 | 5. GROUND button (micro-only) + `WorldTier.Ground` gates | ✅ DONE | chip hidden everywhere except the surface micro; SURFACE chip climbs back in-scene |
-| 6. Zoom-floor drop entry + ground battle-exit gate | 🔶 REV 3 | hyper drop → ground SHIPPED (it IS the entry now); ground-side battle-exit block rides with combat parity |
+| 6. Zoom-floor drop entry + ground battle-exit gate | ✅ DONE | hyper drop → ground IS the entry; battle gate SHIPPED — a living hostile blocks [M], the SURFACE chip (greyed with reason), and every chart view until the fight resolves |
 | 7. Fleet descent + terrain-following hover | ✅ DONE | exact fleet group handed off (no re-resolve); opens at 150 m over terrain, ShipTerrainFollow from spawn; ▼/▲ bands attach/detach it |
-| 8. Seeded stones (collect + per-player cloud persistence) | ⬜ TODO | seeds exist (StoneSet); spawner + SalvageItem collect + PlayFab collected-set pending |
-| 9. Half-buried asteroids (mineable, per-player A− grades) | 🔶 CORE DONE | ~196 rocks per 6×6 km field, sink law, MinableRockFactory stack, per-player capped site grades; per-player DEPLETION persistence pending |
+| 8. Seeded stones (collect + per-player cloud persistence) | ✅ DONE | fly-near collect (60 m), per-player collected-set cloud-pushed per pickup; BRIDGE: primitive art, tonnage banks as session tally until cargo integration |
+| 9. Half-buried asteroids (mineable, per-player A− grades) | ✅ DONE | equal-area de-striped placement, size-skewed 6–55, radar contacts; per-player DEPLETION restored at spawn + banked to cloud on exit |
 | 10. Micro-visibility pass (asteroids from surface micro) | ✂ OBSOLETE (rev 3) | the ground IS the micro — the real asteroids are already in the view |
-| 11. Base building + land claim binding | ⬜ TODO | existing stack, mostly wiring |
-| 12. Combat parity + final verification (terrain-identity test, docs) | ⬜ TODO | master_to_do.md cross-links land here |
+| 11. Base building + land claim binding | ✅ DONE (code) | audit: scene parity ✓ (BaseBuildPanel identical to Planet_01), stack self-installs ✓, bodyId already live-context ✓; CLOSED the "ownerId hardcoded test_player" bridge at BOTH record-creation sites (live PlayFab id). Play-verify (claim → beacon → drones → build on Draxxor ground) joins the verify-pass |
+| 12. Combat parity + final verification (terrain-identity test, docs) | 🔶 CODE DONE | shipped: analytic terrain LOS (`GroundTerrainOcclusion` — radar detection honors ridges, matching the scope's shadow wedges), projectiles detonate on the analytic dirt (collider-independent; dirt hit = stats MISS), battle-exit gate, dev **[K] mirror-enemy** soak scaffold (sandbox-doctrine wiring + ground band + terrain-follow; engine handicap so it's catchable). AI altitude rides ShipTerrainFollow. REMAINING: the in-play soak (fight one battle: LOS feel, dirt impacts, AI vs ridges, float precision), acceptance passes (terrain-identity, two-account determinism), master_to_do cross-links, then rev-3 deletion |
 
 Fixes shipped from Aaron's play tests: bridge-fleet masquerade (override group id + never-silent fallback warning), cruise-shell-high arrival (150 m ground band), invisible rocks (density retune 1° → 0.05° cells + landscape-readiness wait before seeding).
 

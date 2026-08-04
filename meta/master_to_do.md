@@ -581,6 +581,19 @@ The active doc track is now Phase 6.9.A through 6.9.H (three-scene architecture 
 ### 6.9.A → 6.9.H — Three-scene architecture rollout (NEW PRIMARY TRACK)
 **Goal:** Ship the three-scene world model (Solar / Low Orbit / Surface) replacing the deprecated 2D planet entry scene. Full plan at `~/.claude/plans/if-i-was-going-mutable-parnas.md`.
 
+> **α1.8/α1.9 GROUND TIER — BUILT 2026-08-03** (Aaron-approved pivots: in-scene on the native
+> 1M Draxxor; **the ground IS the surface micro** — hyper drop descends the fleet to the 150 m
+> floor; battles fight there). Live status + remaining soak/cleanup items:
+> [`../ground_tier_implementation_plan.md`](../ground_tier_implementation_plan.md). Bridges this
+> closed: `SurfaceTilePlacer.ownerId` "test_player" → live PlayFab id (both record-creation
+> sites); `bodyId` was already context-sourced. New per-player cloud state on `PlayerProfile`:
+> `groundStonesCollected` + `groundAsteroids` (depletion). New systems under
+> `Assets/Scripts/Macro/Ground/`: `GroundContentSeeds` (game-seed placement / A−-capped
+> player-seed grades, equal-area cells), `GroundAsteroidField`, `GroundStoneField`,
+> `ShipTerrainFollow`, `GroundTerrainOcclusion` (analytic terrain LOS), `GroundCombatDev`
+> (dev [K] mirror-enemy soak). DORMANT pending post-soak deletion: `PlanetSurfaceMacro.DropToMicro`
+> + the `SurfaceStageDrop` dresser path + `PendingGroundEntry`/`LastMicroGroupId` + dev [G] key.
+
 - [ ] **6.9.A — Surface scene template** (`Assets/Scenes/Surface.unity`). Loader, 3D surface-base placement at (lat, lon), activity-noise visibility. Single-planet test (Avernus). No Fusion yet. Canon: [`../world/world_surface_scene.md`](../world/world_surface_scene.md).
   - [ ] **6.9.A.tile — 4 m grid surface tile pipeline** (parallel to free-place base parts; in-flight in `PlanetTest_Alythar.unity`). Hybrid square + equilateral-triangle grid, socket-snap, structural-integrity DAG. Canon: [`../pipelines/pipeline_surface_tile.md`](../pipelines/pipeline_surface_tile.md).
     - [ ] **6.9.A.tile.1** — `BaseTileSchema` ScriptableObject + `TileShape` / `TileRole` / `TileSocketKind` enums. New file: `Assets/Scripts/Schemas/BaseTileSchema.cs`.
